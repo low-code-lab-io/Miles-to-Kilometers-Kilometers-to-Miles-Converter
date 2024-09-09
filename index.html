@@ -1,0 +1,77 @@
+<meta charset="UTF-8">
+<style><!--
+body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .converter {
+            max-width: 450px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .converter h2 {
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            text-align: center;
+        }
+        .converter label {
+            font-size: 1em;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .converter input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        .converter button {
+            width: 100%;
+            padding: 10px;
+            background-color: #bf442e;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        .converter button:hover {
+            background-color: #a43724;
+        }
+        .converter .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            text-align: center;
+        }
+--></style>
+<div class="converter">
+<h2></h2>
+<label for="miles">Enter Miles:</label> <input step="0.01" placeholder="Enter miles" id="miles" type="number"> <label for="kilometers">Enter Kilometers:</label> <input step="0.01" placeholder="Enter kilometers" id="kilometers" type="number"> <button onclick="convertDistance()">Convert</button>
+<div class="result" id="result"></div>
+</div>
+<script>
+    function convertDistance() {
+        var miles = document.getElementById('miles').value;
+        var kilometers = document.getElementById('kilometers').value;
+        var resultText = '';
+
+        if (miles) {
+            var kmResult = (miles * 1.60934).toFixed(2);
+            resultText = miles + " miles is equal to " + kmResult + " kilometers.";
+        } else if (kilometers) {
+            var milesResult = (kilometers / 1.60934).toFixed(2);
+            resultText = kilometers + " kilometers is equal to " + milesResult + " miles.";
+        } else {
+            resultText = "Please enter a value in either miles or kilometers.";
+        }
+
+        document.getElementById('result').innerHTML = resultText;
+    }
+</script>
